@@ -41,7 +41,7 @@
 export default {
   computed: {
     image() {
-      return `/images/${this.color}.png`;
+      return `/images/insects/${this.color}_400x400.png`;
     }
   },
   methods: {

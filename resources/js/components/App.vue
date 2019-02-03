@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col d-flex">
           <div class="row border align-items-end mt-4 ml-0 mr-0">
-            <img src="images/random.png" alt="random" style="width:100%;max-width:400px;" class="p-2 mx-auto d-block">
+            <img src="images/random_400x400.png" alt="random" style="width:100%;max-width:400px;" class="p-2 mx-auto d-block">
             <button type="button" class="btn btn-primary btn-block m-2" @click="create">Add a random insect</button>
           </div>
         </div>
