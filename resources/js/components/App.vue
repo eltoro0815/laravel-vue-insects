@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container mt-4">
-      <h2>You find {{cruds.length | insects_unit}} in this spot.</h2>
+      <h2>You find {{insects.length | insects_unit}} in this spot.</h2>
     </div>
     <div class="container">
       <div class="row">
@@ -12,29 +12,29 @@
           </div>
         </div>
 
-        <crud-component
-          v-for="crud in cruds"
-          v-bind="crud"
-          :key="crud.id"
+        <insect-component
+          v-for="insect in insects"
+          v-bind="insect"
+          :key="insect.id"
           @update="update"
           @delete="del"
-        ></crud-component>
+        ></insect-component>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-function Crud({ id, color, name }) {
+function Insect({ id, type, name }) {
   this.id = id;
-  this.color = color;
+  this.type = type;
   this.name = name;
 }
-import CrudComponent from "./CrudComponent.vue";
+import InsectComponent from "./InsectComponent.vue";
 export default {
   data() {
     return {
-      cruds: [],
+      insects: [],
       mute: false
     };
   },
@@ -56,37 +56,35 @@ export default {
   },
 
   methods: {
-    test() {
-      alert("test");
-    },
+
     create() {
       this.mute = true;
-      window.axios.get("/api/cruds/create").then(({ data }) => {
-        this.cruds.push(new Crud(data));
+      window.axios.get("/api/insects/create").then(({ data }) => {
+        this.insects.push(new Insect(data));
         this.mute = false;
       });
     },
     read() {
       this.mute = true;
-      window.axios.get("/api/cruds").then(({ data }) => {
-        data.forEach(crud => {
-          this.cruds.push(new Crud(crud));
+      window.axios.get("/api/insects").then(({ data }) => {
+        data.forEach(insect => {
+          this.insects.push(new Insect(insect));
         });
         this.mute = false;
       });
     },
     update(id, color) {
       this.mute = true;
-      window.axios.put(`/api/cruds/${id}`, { color }).then(() => {
-        this.cruds.find(crud => crud.id === id).color = color;
+      window.axios.put(`/api/insects/${id}`, { type }).then(() => {
+        this.insects.find(crud => crud.id === id).type = type;
         this.mute = false;
       });
     },
     del(id) {
       this.mute = true;
-      window.axios.delete(`/api/cruds/${id}`).then(() => {
-        let index = this.cruds.findIndex(crud => crud.id === id);
-        this.cruds.splice(index, 1);
+      window.axios.delete(`/api/insects/${id}`).then(() => {
+        let index = this.insects.findIndex(insect => insect.id === id);
+        this.insects.splice(index, 1);
         this.mute = false;
       });
     }
@@ -97,7 +95,7 @@ export default {
     }
   },
   components: {
-    CrudComponent
+    InsectComponent: InsectComponent
   },
   created() {
     this.read();

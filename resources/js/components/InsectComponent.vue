@@ -14,10 +14,10 @@
 
       <select class="custom-select m-2" @change="update">
         <option
-          v-for="col in [
-            'ant', 
-            'bug', 
-            'bee', 
+          v-for="typ in [
+            'ant',
+            'bee',
+            'bug',
             'butterfly', 
             'dragonfly', 
             'fly', 
@@ -28,10 +28,10 @@
             'roach',
             'tick' 
             ]"
-          :value="col"
-          :key="col"
-          :selected="col === color ? 'selected' : ''"
-        >{{ col | properCase }}</option>
+          :value="typ"
+          :key="typ"
+          :selected="typ === type ? 'selected' : ''"
+        >{{ typ | properCase }}</option>
       </select>
       <button type="button" class="btn btn-primary btn-block m-2" @click="fn_delete">Delete</button>
     </div>
@@ -41,7 +41,7 @@
 export default {
   computed: {
     image() {
-      return `/images/insects/${this.color}_400x400.png`;
+      return `/images/insects/${this.type}_400x400.png`;
     }
   },
   methods: {
@@ -52,7 +52,7 @@ export default {
       this.$emit("delete", this.id);
     }
   },
-  props: ["id", "color", "name"],
+  props: ["id", "type", "name"],
   filters: {
     properCase(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
