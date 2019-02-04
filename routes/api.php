@@ -1,5 +1,5 @@
 <?php
 
-Route::resource('/cruds', 'CrudsController', [
+Route::resource('/insects', 'InsectsController', [
   'except' => ['edit', 'show', 'store']
 ]);
