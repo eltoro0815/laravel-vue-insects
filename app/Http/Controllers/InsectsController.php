@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Crud;
+use App\Insect;
 use Faker\Generator;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class CrudsController extends Controller
+class InsectsController extends Controller
 {
     public function create(Generator $faker)
     {
-        $crud = new Crud();
-        $crud->name = $faker->name;
+        $insect = new Insect();
+        $insect->name = $faker->name;
         
-        $crud->color = $faker->randomElement(
+        $insect->type = $faker->randomElement(
             array(
                     'ant',
-                    'bug',
                     'bee',
+                    'bug',
                     'butterfly',
                     'dragonfly',
                     'fly',
@@ -30,20 +30,20 @@ class CrudsController extends Controller
                     'tick'
 				)
         );
-        $crud->save();
+        $insect->save();
 
-        return response($crud->jsonSerialize(), Response::HTTP_CREATED);
+        return response($insect->jsonSerialize(), Response::HTTP_CREATED);
     }
 
     public function index()
     {
-        return response(Crud::all()->jsonSerialize(), Response::HTTP_OK);
+        return response(Insect::all()->jsonSerialize(), Response::HTTP_OK);
     }
 
     public function update(Request $request, $id)
     {
-        $crud = Crud::findOrFail($id);
-        $crud->color = $request->color;
+        $crud = Insect::findOrFail($id);
+        $crud->type = $request->type;
         $crud->save();
 
         return response(null, Response::HTTP_OK);
@@ -51,7 +51,7 @@ class CrudsController extends Controller
 
     public function destroy($id)
     {
-        Crud::destroy($id);
+        Insect::destroy($id);
 
         return response(null, Response::HTTP_OK);
     }
