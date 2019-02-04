@@ -73,10 +73,10 @@ export default {
         this.mute = false;
       });
     },
-    update(id, color) {
+    update(id, type) {
       this.mute = true;
       window.axios.put(`/api/insects/${id}`, { type }).then(() => {
-        this.insects.find(crud => crud.id === id).type = type;
+        this.insects.find(insect => insect.id === id).type = type;
         this.mute = false;
       });
     },
