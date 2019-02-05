@@ -12,14 +12,15 @@ class CreateInsectsTable extends Migration
      * @return void
      */
     public function up()
-  {
-    Schema::create('insects', function (Blueprint $table) {
-      $table->increments('id');
-      $table->text('name');
-      $table->text('type');
-      $table->timestamps();
-    });
-  }
+    {
+        Schema::create('insects', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('name');
+            $table->text('type');
+            $table->integer('position');
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.

@@ -21,5 +21,5 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  */
 class Insect extends Model {
-	//
+    use \Rutorika\Sortable\SortableTrait;
 }
