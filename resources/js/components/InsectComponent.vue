@@ -52,7 +52,7 @@ export default {
       this.$emit("delete", this.id);
     }
   },
-  props: ["id", "type", "name"],
+  props: ["id", "type", "name", "position"],
   filters: {
     properCase(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);

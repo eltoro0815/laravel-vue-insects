@@ -25,10 +25,11 @@
 </template>
 
 <script>
-function Insect({ id, type, name }) {
+function Insect({ id, type, name, position }) {
   this.id = id;
   this.type = type;
   this.name = name;
+  this.position = position;
 }
 import InsectComponent from "./InsectComponent.vue";
 export default {
