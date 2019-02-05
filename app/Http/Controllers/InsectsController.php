@@ -37,7 +37,7 @@ class InsectsController extends Controller
 
     public function index()
     {
-        return response(Insect::all()->jsonSerialize(), Response::HTTP_OK);
+        return response(Insect::sorted()->get()->jsonSerialize(), Response::HTTP_OK);
     }
 
     public function update(Request $request, $id)
