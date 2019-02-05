@@ -19,6 +19,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Insect whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Insect whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $position
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Insect sorted()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Insect wherePosition($value)
  */
 class Insect extends Model {
     use \Rutorika\Sortable\SortableTrait;
