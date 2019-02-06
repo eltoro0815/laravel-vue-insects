@@ -43,7 +43,11 @@ class InsectsController extends Controller
     public function update(Request $request, $id)
     {
         $crud = Insect::findOrFail($id);
-        $crud->type = $request->type;
+        if (isset($request->type))
+        {
+            $crud->type = $request->type;
+        }
+
         $crud->save();
 
         return response(null, Response::HTTP_OK);
