@@ -5,13 +5,13 @@
             <button @click="create_insect" class="btn btn-primary" type="button">Add a random insect</button>
         </div>
         <div class="container">
-            <draggable :list="insects" :options="{draggable:'.item', animation:200, handle:'.my-handle'}" class="row">
+            <draggable v-model="insects" :options="{draggable:'.item', animation:200, handle:'.my-handle'}" class="row" @change="update_insect_position">
                 <insect-component
                         class="item"
                         v-for="insect in insects"
                         v-bind="insect"
                         :key="insect.id"
-                        @update_insect="update_insect"
+                        @update_insect_type="update_insect_type"
                         @delete_insect="delete_insect"
                 ></insect-component>
             </draggable>
@@ -20,11 +20,10 @@
 </template>
 
 <script>
-    function Insect({id, type, name, position}) {
+    function Insect({id, type, name}) {
         this.id = id;
         this.type = type;
         this.name = name;
-        this.position = position;
     }
 
     import InsectComponent from "./InsectComponent.vue";
@@ -63,11 +62,12 @@
 
             create_insect() {
                 this.mute = true;
-                window.axios.get("/api/insects/create").then(({data}) => {
+                window.axios.post("/api/insects/store").then(({data}) => {
                     this.insects.push(new Insect(data));
                     this.mute = false;
                 });
             },
+
             read() {
                 this.mute = true;
                 window.axios.get("/api/insects").then(({data}) => {
@@ -77,13 +77,19 @@
                     this.mute = false;
                 });
             },
-            update_insect(id, type) {
+
+            update_insect_type(id, type) {
                 this.mute = true;
                 window.axios.put(`/api/insects/${id}`, {type}).then(() => {
                     this.insects.find(insect => insect.id === id).type = type;
                     this.mute = false;
                 });
             },
+
+            update_insect_position() {
+                console.log("update position");
+            },
+
             delete_insect(id) {
                 this.mute = true;
                 window.axios.delete(`/api/insects/${id}`).then(() => {
@@ -93,6 +99,7 @@
                 });
             }
         },
+
         watch: {
             mute(value) {
                 // %todo%

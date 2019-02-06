@@ -9,7 +9,7 @@ use Illuminate\Http\Response;
 
 class InsectsController extends Controller
 {
-    public function create(Generator $faker)
+    public function store(Generator $faker)
     {
         $insect = new Insect();
         $insect->name = $faker->name;
@@ -42,13 +42,14 @@ class InsectsController extends Controller
 
     public function update(Request $request, $id)
     {
-        $crud = Insect::findOrFail($id);
+        $insect = Insect::findOrFail($id);
+
         if (isset($request->type))
         {
-            $crud->type = $request->type;
+            $insect->type = $request->type;
         }
 
-        $crud->save();
+        $insect->save();
 
         return response(null, Response::HTTP_OK);
     }

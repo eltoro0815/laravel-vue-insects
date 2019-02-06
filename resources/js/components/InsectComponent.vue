@@ -12,7 +12,7 @@
                 <span>{{ name | properCase }}</span>
             </h3>
 
-            <select class="custom-select m-2 align-self-end" @change="update_insect">
+            <select class="custom-select m-2 align-self-end" @change="update_insect_type">
                 <option
                         v-for="typ in [
                                             'ant',
@@ -47,14 +47,14 @@
             }
         },
         methods: {
-            update_insect(val) {
-                this.$emit("update_insect", this.id, val.target.selectedOptions[0].value);
+            update_insect_type(val) {
+                this.$emit("update_insect_type", this.id, val.target.selectedOptions[0].value);
             },
             delete_insect() {
                 this.$emit("delete_insect", this.id);
             }
         },
-        props: ["id", "type", "name", "position"],
+        props: ["id", "type", "name"],
         filters: {
             properCase(string) {
                 return string.charAt(0).toUpperCase() + string.slice(1);
