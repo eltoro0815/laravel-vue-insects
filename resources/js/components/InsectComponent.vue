@@ -5,16 +5,16 @@
                     :src="image"
                     :alt="name | properCase"
                     style="width:100%;max-width:400px;"
-                    class="p-2 mx-auto d-block my-handle align-self-baseline"
+                    class="mx-auto d-block my-handle align-self-baseline"
             >
 
-            <h3 class="pl-2 container-fluid text-center align-self-baseline">
+            <h3 class="container-fluid text-center align-self-baseline">
                 <span>{{ name | properCase }}</span>
             </h3>
-
-            <select class="custom-select m-2 align-self-end" @change="update_insect_type">
-                <option
-                        v-for="typ in [
+            <div class="align-self-end container-fluid">
+                <select class="custom-select mb-1" @change="update_insect_type">
+                    <option
+                            v-for="typ in [
                                             'ant',
                                             'bee',
                                             'bug',
@@ -28,14 +28,14 @@
                                             'roach',
                                             'tick'
                                         ]"
-                        :value="typ"
-                        :key="typ"
-                        :selected="typ === type ? 'selected' : ''"
-                >{{ typ | properCase }}
-                </option>
-            </select>
-            <button type="button" class="btn btn-primary btn-block m-2 align-self-end" @click="delete_insect">Delete</button>
-
+                            :value="typ"
+                            :key="typ"
+                            :selected="typ === type ? 'selected' : ''"
+                    >{{ typ | properCase }}
+                    </option>
+                </select>
+                <button type="button" class="mb-1 btn btn-primary btn-block" @click="delete_insect">Delete</button>
+            </div>
         </div>
     </div>
 </template>

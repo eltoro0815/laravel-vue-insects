@@ -62,7 +62,7 @@
 
             create_insect() {
                 this.mute = true;
-                window.axios.post("/api/insects/store").then(({data}) => {
+                window.axios.post("/api/insects").then(({data}) => {
                     this.insects.push(new Insect(data));
                     this.mute = false;
                 });

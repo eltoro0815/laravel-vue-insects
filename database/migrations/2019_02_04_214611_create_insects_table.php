@@ -17,7 +17,7 @@ class CreateInsectsTable extends Migration
             $table->increments('id');
             $table->text('name');
             $table->text('type');
-            $table->integer('position');
+            $table->integer('position')->default(1);
             $table->timestamps();
         });
     }
