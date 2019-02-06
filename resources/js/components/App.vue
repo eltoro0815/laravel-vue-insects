@@ -5,7 +5,8 @@
             <button @click="create_insect" class="btn btn-primary" type="button">Add a random insect</button>
         </div>
         <div class="container">
-            <draggable v-model="insects" :options="{draggable:'.item', animation:200, handle:'.my-handle'}" class="row" @change="update_insect_position">
+            <draggable v-model="insects" :options="{draggable:'.item', animation:200, handle:'.my-handle'}" class="row"
+                       @change="update_insect_position">
                 <insect-component
                         class="item"
                         v-for="insect in insects"
@@ -52,7 +53,7 @@
                         return "1 insect";
                         break;
                     default:
-                        return value + " insects";
+                        return `${value} insects`;
                         break;
                 }
             }
@@ -80,14 +81,39 @@
 
             update_insect_type(id, type) {
                 this.mute = true;
-                window.axios.put(`/api/insects/${id}`, {type}).then(() => {
-                    this.insects.find(insect => insect.id === id).type = type;
-                    this.mute = false;
-                });
+                window.axios.patch(`/api/insects/${id}`, {"type": type})
+                    .then(({data}) => {
+                        this.insects.find(insect => insect.id === id).type = data.type;
+                        this.mute = false;
+                    });
             },
 
-            update_insect_position() {
-                console.log("update position");
+            update_insect_position(params) {
+                this.mute = true;
+
+                let insect_id = params.moved.element.id;
+
+                if (params.moved.newIndex == 0) {
+                    // we will put the element to the front
+                    window.axios.patch(`/api/insects/${insect_id}`, {"op": "move_to_first_position"})
+                        .then(() => {
+                            this.mute = false;
+                        });
+
+
+                } else {
+                    // we get the new predecessor (newIndex-1) and put it just after it
+                    let new_predecessor_id = this.insects[params.moved.newIndex - 1].id;
+
+                    window.axios.patch(`/api/insects/${insect_id}`, {
+                        "op": "move_after_element",
+                        "predecessor_id": new_predecessor_id
+                    })
+                        .then(() => {
+                            this.mute = false;
+                        });
+
+                }
             },
 
             delete_insect(id) {
@@ -104,11 +130,13 @@
             mute(value) {
                 // %todo%
             }
-        },
+        }
+        ,
 
         created() {
             this.read();
         }
-    };
+    }
+    ;
 </script>
 

@@ -1,5 +1,7 @@
 <?php
+
 namespace App;
+
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -23,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Insect sorted()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Insect wherePosition($value)
  */
-class Insect extends Model {
+class Insect extends Model
+{
     use \Rutorika\Sortable\SortableTrait;
 }

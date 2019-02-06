@@ -11,6 +11,7 @@
             <h3 class="container-fluid text-center align-self-baseline">
                 <span>{{ name | properCase }}</span>
             </h3>
+            
             <div class="align-self-end container-fluid">
                 <select class="custom-select mb-1" @change="update_insect_type">
                     <option
