@@ -1,19 +1,19 @@
 <template>
     <div class="col d-flex">
-        <div class="row border align-items-end mt-4 ml-0 mr-0">
+        <div class="row border align-items-baseline mt-4 ml-0 mr-0">
+            <button type="button" class="btn btn-primary my-handle"><i class="fas fa-arrows-alt"></i></button>
             <img
                     :src="image"
                     :alt="name | properCase"
                     style="width:100%;max-width:400px;"
-                    class="p-2 mx-auto d-block"
+                    class="p-2 mx-auto d-block my-handle align-self-baseline"
             >
 
-            <h3 class="pl-2 container-fluid text-center">
+            <h3 class="pl-2 container-fluid text-center align-self-baseline">
                 <span>{{ name | properCase }}</span>
-                <i class="fa fa-arrows my-handle"></i>
             </h3>
 
-            <select class="custom-select m-2" @change="update_insect">
+            <select class="custom-select m-2 align-self-end" @change="update_insect">
                 <option
                         v-for="typ in [
                                             'ant',
@@ -35,7 +35,8 @@
                 >{{ typ | properCase }}
                 </option>
             </select>
-            <button type="button" class="btn btn-primary btn-block m-2" @click="delete_insect">Delete</button>
+            <button type="button" class="btn btn-primary btn-block m-2 align-self-end" @click="delete_insect">Delete</button>
+
         </div>
     </div>
 </template>
