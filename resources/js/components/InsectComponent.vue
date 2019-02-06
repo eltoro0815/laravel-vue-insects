@@ -1,11 +1,11 @@
 <template>
     <div class="col d-flex">
-        <div class="row border align-items-baseline mt-4 ml-0 mr-0">
+        <div class="row border align-items-baseline mt-4 ml-0 mr-0 bg-white">
             <img
                     :src="image"
                     :alt="name | properCase"
                     style="width:100%;max-width:400px;"
-                    class="mx-auto d-block my-handle align-self-baseline"
+                    class="p-2 mx-auto d-block my-handle align-self-baseline"
             >
 
             <h3 class="container-fluid text-center align-self-baseline">
