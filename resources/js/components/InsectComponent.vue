@@ -1,7 +1,6 @@
 <template>
     <div class="col d-flex">
         <div class="row border align-items-baseline mt-4 ml-0 mr-0">
-            <button type="button" class="btn btn-primary my-handle"><i class="fas fa-arrows-alt"></i></button>
             <img
                     :src="image"
                     :alt="name | properCase"
