@@ -4,4 +4,9 @@ The list of insects is sortable by drag&drop in the frontend and saved in the ba
 
 Life EXAMPLE: https://laravel-vue-insects.herokuapp.com/
 
+Ressources and Special Thanks to:
+* https://mikateach.com/setting-up-laravel-5-6-on-heroku/
+* https://github.com/SortableJS/Vue.Draggable
+* https://packagist.org/packages/rutorika/sortable
+
 ![Screenshot](/screenshot.gif?raw=true "Screenshot")
