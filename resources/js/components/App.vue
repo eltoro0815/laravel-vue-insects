@@ -17,7 +17,9 @@
       <div class="container">
         <draggable
           v-model="insects"
-          :options="{draggable:'.item', animation:200, handle:'.my-handle'}"
+          handle=".my-handle"
+          draggable=".item"
+          animation="200"
           class="row"
           @change="update_insect_position"
         >
@@ -65,7 +67,7 @@ export default {
       canCancel: false,
       useSlot: false,
       loader: "spinner",
-      color: "#007bff",
+      color: "#ff7f00",
       bgColor: "#ffffff",
       height: 128,
       width: 128

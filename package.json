@@ -26,6 +26,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "bootstrap-select": "^1.13.9",
         "vue-loading-overlay": "^3.2.0",
         "vuedraggable": "^2.20.0"
     }

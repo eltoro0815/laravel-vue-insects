@@ -7,6 +7,8 @@
 
 require('./bootstrap');
 
+require('bootstrap-select');
+
 window.Vue = require('vue');
 
 Vue.config.devtools = true;
