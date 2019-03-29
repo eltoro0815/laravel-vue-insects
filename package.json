@@ -11,7 +11,7 @@
     },
     "devDependencies": {
         "axios": "^0.18",
-        "bootstrap": "^4.0.0",
+        "bootstrap": "^4.3.1",
         "browser-sync": "^2.26.3",
         "browser-sync-webpack-plugin": "^2.0.1",
         "cross-env": "^5.1",
@@ -19,14 +19,14 @@
         "laravel-mix": "^4.0.15",
         "lodash": "^4.17.5",
         "popper.js": "^1.12",
-        "resolve-url-loader": "^2.3.1",
-        "sass": "^1.15.2",
+        "resolve-url-loader": "^2.3.2",
+        "sass": "^1.17.3",
         "sass-loader": "^7.1.0",
-        "vue": "^2.6.0",
-        "vue-template-compiler": "^2.6.0"
+        "vue": "^2.6.10",
+        "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
         "vue-loading-overlay": "^3.2.0",
-        "vuedraggable": "^2.17.0"
+        "vuedraggable": "^2.20.0"
     }
 }
